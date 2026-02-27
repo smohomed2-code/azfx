@@ -4,7 +4,7 @@ import { TrendingUp, TrendingDown, Shield, CheckCircle2, AlertCircle, ChevronLef
 
 // ============================================
 // CONFIGURATION - PUT YOUR API KEY HERE
-const FINNHUB_API_KEY = 'd6ggca1r01quah09evs0d6ggca1r01quah09evsg'; // Get from finnhub.io
+const FINNHUB_API_KEY = 'd6ggca1r01quah09evs0d6ggca1r01quah09evsg';
 // ============================================
 
 type Screen = 'dashboard' | 'breakdown' | 'chart' | 'timing' | 'grading';
