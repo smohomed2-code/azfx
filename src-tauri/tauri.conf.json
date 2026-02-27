@@ -8,17 +8,8 @@
   "tauri": {
     "allowlist": {
       "all": false,
-      "window": {
-        "all": true
-      },
-      "shell": {
-        "open": true
-      },
-      "http": {
-        "all": true,
-        "request": true,
-        "scope": ["https://**", "wss://**"]
-      }
+      "window": { "all": true },
+      "shell": { "open": true }
     },
     "bundle": {
       "active": true,
@@ -26,8 +17,8 @@
       "copyright": "AZFX",
       "identifier": "com.azfx.trading",
       "shortDescription": "AZFX Gold Trading",
-      "longDescription": "Professional XAUUSD Gold Trading Intelligence",
-      "targets": "all",
+      "longDescription": "AZFX Gold Trading Intelligence",
+      "targets": ["msi", "exe"],
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
@@ -35,22 +26,18 @@
       }
     },
     "security": {
-      "csp": "default-src 'self'; connect-src 'self' https: wss:; script-src 'self'; style-src 'self' 'unsafe-inline';"
+      "csp": "default-src 'self'"
     },
-    "updater": {
-      "active": false
-    },
-    "windows": [
-      {
-        "fullscreen": false,
-        "height": 900,
-        "resizable": true,
-        "title": "AZFX - Gold Trading Intelligence",
-        "width": 1400,
-        "minWidth": 1200,
-        "minHeight": 800,
-        "center": true
-      }
-    ]
+    "updater": { "active": false },
+    "windows": [{
+      "fullscreen": false,
+      "height": 900,
+      "resizable": true,
+      "title": "AZFX - Gold Trading Intelligence",
+      "width": 1400,
+      "minWidth": 1200,
+      "minHeight": 800,
+      "center": true
+    }]
   }
 }
