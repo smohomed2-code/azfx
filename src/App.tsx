@@ -353,22 +353,44 @@ useEffect(() => {
         wickUpColor: '#22c55e', wickDownColor: '#ef4444',
       });
 
-      // Use real price data if available, otherwise generate
-      const basePrice = priceData.price || 2845;
-      const data = [];
-      let price = basePrice - 10;
-      
-      for (let i = 50; i >= 0; i--) {
-        const time = Math.floor(Date.now() / 1000) - (i * 900);
-        const open = price;
-        const close = price + (Math.random() - 0.3) * 3;
-        const high = Math.max(open, close) + Math.random();
-        const low = Math.min(open, close) - Math.random();
-        data.push({ time, open: parseFloat(open.toFixed(2)), high: parseFloat(high.toFixed(2)), low: parseFloat(low.toFixed(2)), close: parseFloat(close.toFixed(2)) });
-        price = close;
-      }
-      candleSeries.setData(data);
-      chart.timeScale().fitContent();
+     // Use real price data if available, otherwise generate
+const basePrice = priceData.price || 2845;
+
+const data: {
+  time: UTCTimestamp;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+}[] = [];
+
+let price = basePrice - 10;
+
+for (let i = 50; i >= 0; i--) {
+
+  // South African Time (UTC+2)
+  const time = (
+    Math.floor(Date.now() / 1000) - (i * 900) + 7200
+  ) as UTCTimestamp;
+
+  const open = price;
+  const close = price + (Math.random() - 0.3) * 3;
+  const high = Math.max(open, close) + Math.random();
+  const low = Math.min(open, close) - Math.random();
+
+  data.push({
+    time,
+    open: parseFloat(open.toFixed(2)),
+    high: parseFloat(high.toFixed(2)),
+    low: parseFloat(low.toFixed(2)),
+    close: parseFloat(close.toFixed(2)),
+  });
+
+  price = close;
+}
+
+candleSeries.setData(data);
+chart.timeScale().fitContent();
 
       return () => chart.remove();
     }, [priceData.price]);
