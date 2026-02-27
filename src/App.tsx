@@ -61,50 +61,10 @@ function App() {
   const [connectionStatus, setConnectionStatus] = useState<'connecting' | 'live' | 'error'>('connecting');
   const wsRef = useRef<WebSocket | null>(null);
 
-  // ============================================
-  // REAL DATA CONNECTION
-  // ============================================
-  useEffect(() => {
-    // Check if API key is set
-    if (FINNHUB_API_KEY === 'YOUR_API_KEY_HERE') {
-      console.log('Using simulated data - add your API key for real data');
-      setConnectionStatus('error');
-      // Fall back to simulation
-      const interval = setInterval(() => {
-        setPriceData(prev => {
-          const change = (Math.random() - 0.5) * 0.5;
-          const newPrice = prev.price + change;
-          return {
-            ...prev,
-            price: newPrice,
-            bid: newPrice - 0.05,
-            ask: newPrice + 0.07,
-            change: prev.change + change,
-            changePercent: ((prev.change + change) / newPrice) * 100,
-            high24h: Math.max(prev.high24h, newPrice),
-            low24h: Math.min(prev.low24h, newPrice),
-            timestamp: Date.now(),
-            isReal: false
-          };
-        });
-      }, 2000);
-      return () => clearInterval(interval);
-    }
-
-    // REAL WebSocket connection to Finnhub
-    const connectWebSocket = () => {
-      try {
-        const ws = new WebSocket(`wss://ws.finnhub.io?token=${FINNHUB_API_KEY}`);
-        wsRef.current = ws;
-
-        ws.onopen = () => {
-          console.log('Connected to live market data');
-          setConnectionStatus('live');
-          // Subscribe to GOLD (XAUUSD via GLD ETF as proxy, or use forex if available)
-          ws.send(JSON.stringify({ type: 'subscribe', symbol: 'GLD' }));
-          // Alternative: subscribe to multiple sources
-          ws.send(JSON.stringify({ type: 'subscribe', symbol: 'GC=F' })); // Gold Futures
-        };
+ // ============================================
+// REAL DATA CONNECTION
+// ============================================
+useEffect(() => {
 
         ws.onmessage = (event) => {
           const data = JSON.parse(event.data);
