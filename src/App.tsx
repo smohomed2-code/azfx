@@ -61,63 +61,76 @@ function App() {
   const [connectionStatus, setConnectionStatus] = useState<'connecting' | 'live' | 'error'>('connecting');
   const wsRef = useRef<WebSocket | null>(null);
 
- // ============================================
+// ============================================
 // REAL DATA CONNECTION
 // ============================================
 useEffect(() => {
 
-        ws.onmessage = (event) => {
-          const data = JSON.parse(event.data);
-          console.log('Received:', data);
+  const connectWebSocket = () => {
+    try {
+      const ws = new WebSocket(
+        `wss://ws.finnhub.io?token=${FINNHUB_API_KEY}`
+      );
 
-          if (data.type === 'trade' && data.data) {
-            const trade = data.data[0];
-            const newPrice = trade.p;
-            
-            setPriceData(prev => ({
-              price: newPrice,
-              bid: newPrice - 0.05,
-              ask: newPrice + 0.07,
-              change: newPrice - prev.price,
-              changePercent: ((newPrice - prev.price) / prev.price) * 100,
-              timestamp: trade.t,
-              high24h: Math.max(prev.high24h, newPrice),
-              low24h: Math.min(prev.low24h, newPrice),
-              volume24h: trade.v || prev.volume24h,
-              isReal: true
-            }));
-          }
-        };
+      wsRef.current = ws;
+      setConnectionStatus('connecting');
 
-        ws.onerror = (error) => {
-          console.error('WebSocket error:', error);
-          setConnectionStatus('error');
-        };
+      ws.onopen = () => {
+        console.log('Connected to live market data');
+        setConnectionStatus('live');
 
-        ws.onclose = () => {
-          console.log('WebSocket closed, reconnecting...');
-          setConnectionStatus('connecting');
-          setTimeout(connectWebSocket, 5000); // Reconnect after 5 seconds
-        };
+        ws.send(JSON.stringify({ type: 'subscribe', symbol: 'GLD' }));
+        ws.send(JSON.stringify({ type: 'subscribe', symbol: 'GC=F' }));
+      };
 
-      } catch (error) {
-        console.error('Failed to connect:', error);
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+
+        if (data.type === 'trade' && data.data && data.data.length > 0) {
+          const trade = data.data[0];
+          const newPrice = trade.p;
+
+          setPriceData(prev => ({
+            ...prev,
+            price: newPrice,
+            bid: newPrice - 0.05,
+            ask: newPrice + 0.07,
+            change: newPrice - prev.price,
+            changePercent: ((newPrice - prev.price) / prev.price) * 100,
+            high24h: Math.max(prev.high24h, newPrice),
+            low24h: Math.min(prev.low24h, newPrice),
+            timestamp: Date.now(),
+            isReal: true
+          }));
+        }
+      };
+
+      ws.onerror = (error) => {
+        console.error('WebSocket error:', error);
         setConnectionStatus('error');
-      }
-    };
+      };
 
-    connectWebSocket();
+      ws.onclose = () => {
+        console.log('WebSocket closed');
+        setConnectionStatus('error');
+      };
 
-    // Cleanup on unmount
-    return () => {
-      if (wsRef.current) {
-        wsRef.current.close();
-      }
-    };
-  }, []);
+    } catch (error) {
+      console.error('Failed to connect:', error);
+      setConnectionStatus('error');
+    }
+  };
+
+  connectWebSocket();
+
+  return () => {
+    wsRef.current?.close();
+  };
+
+}, []);
 
   // ============================================
-  // REST OF YOUR APP (same as before)
+  // REST OF YOUR APP
   // ============================================
 
   const Header = () => (
