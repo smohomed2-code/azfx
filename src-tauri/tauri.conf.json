@@ -1,0 +1,28 @@
+{
+  "build": {
+    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "npm run start",
+    "devPath": "http://localhost:3000",
+    "distDir": "../build"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "window": { "all": true },
+      "shell": { "open": true }
+    },
+    "bundle": {
+      "active": true,
+      "category": "Finance",
+      "identifier": "com.azfx.trading",
+      "targets": ["msi"]
+    },
+    "windows": [
+      {
+        "title": "AZFX - Gold Trading Intelligence",
+        "width": 1400,
+        "height": 900
+      }
+    ]
+  }
+}
