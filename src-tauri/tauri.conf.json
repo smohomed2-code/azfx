@@ -11,12 +11,7 @@
   },
   "tauri": {
     "bundle": {
-      "identifier": "com.azfx.app",
-      "active": true,
-      "targets": "all",
-      "icon": [
-        "icons/icon.ico"
-      ]
+      "active": false
     }
   }
 }
