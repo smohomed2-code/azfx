@@ -392,7 +392,7 @@ for (let i = 50; i >= 0; i--) {
 candleSeries.setData(data);
 chart.timeScale().fitContent();
 
-   return () => chart.remove();
+  return () => chart.remove();
 }, []);
     
     return (
