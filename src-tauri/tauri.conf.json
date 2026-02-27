@@ -1,8 +1,9 @@
-"build": {
-  "beforeBuildCommand": "npm run build",
-  "beforeDevCommand": "npm run start",
-  "distDir": "../build"
-}
+{
+  "build": {
+    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "npm run start",
+    "distDir": "../build"
+  },
   "package": {
     "productName": "azfx",
     "version": "1.0.0"
