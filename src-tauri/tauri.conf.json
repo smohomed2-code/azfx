@@ -18,7 +18,7 @@
       "identifier": "com.azfx.trading",
       "shortDescription": "AZFX Gold Trading",
       "longDescription": "AZFX Gold Trading Intelligence",
-      "targets": ["msi", "exe"],
+      "targets": "all",
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
@@ -29,15 +29,17 @@
       "csp": "default-src 'self'"
     },
     "updater": { "active": false },
-    "windows": [{
-      "fullscreen": false,
-      "height": 900,
-      "resizable": true,
-      "title": "AZFX - Gold Trading Intelligence",
-      "width": 1400,
-      "minWidth": 1200,
-      "minHeight": 800,
-      "center": true
-    }]
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 900,
+        "resizable": true,
+        "title": "AZFX - Gold Trading Intelligence",
+        "width": 1400,
+        "minWidth": 1200,
+        "minHeight": 800,
+        "center": true
+      }
+    ]
   }
 }
