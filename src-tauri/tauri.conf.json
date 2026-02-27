@@ -5,26 +5,17 @@
     "devPath": "http://localhost:3000",
     "distDir": "../build"
   },
+  "package": {
+    "productName": "azfx",
+    "version": "1.0.0"
+  },
   "tauri": {
-    "allowlist": {
-      "all": false,
-      "window": { "all": true },
-      "shell": { "open": true }
-    },
     "bundle": {
-  "active": true,
-  "targets": "all",
-  "icon": [
-    "icons/icon.ico"
-  ]
-}
-    },
-    "windows": [
-      {
-        "title": "AZFX - Gold Trading Intelligence",
-        "width": 1400,
-        "height": 900
-      }
-    ]
+      "active": true,
+      "targets": "all",
+      "icon": [
+        "icons/icon.ico"
+      ]
+    }
   }
 }
