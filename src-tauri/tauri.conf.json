@@ -11,8 +11,8 @@
   },
   "tauri": {
     "bundle": {
-      "identifier": "com.azfx.app",
-      "active": false
+      "active": true,
+      "identifier": "com.azfx.app"
     }
   }
 }
