@@ -12,19 +12,19 @@
       "shell": { "open": true }
     },
     "bundle": {
-      "active": true,
-      "category": "Finance",
-      "copyright": "AZFX",
-      "identifier": "com.azfx.trading",
-      "shortDescription": "AZFX Gold Trading",
-      "longDescription": "AZFX Gold Trading Intelligence",
-      "targets": "all",
-      "windows": {
-        "certificateThumbprint": null,
-        "digestAlgorithm": "sha256",
-        "timestampUrl": ""
-      }
-    },
+  "active": true,
+  "category": "Finance",
+  "copyright": "AZFX",
+  "identifier": "com.azfx.trading",
+  "shortDescription": "AZFX Gold Trading",
+  "longDescription": "AZFX Gold Trading Intelligence",
+  "targets": ["msi", "nsis"],
+  "windows": {
+    "certificateThumbprint": null,
+    "digestAlgorithm": "sha256",
+    "timestampUrl": ""
+  }
+}
     "security": {
       "csp": "default-src 'self'"
     },
