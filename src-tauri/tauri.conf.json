@@ -1,10 +1,8 @@
-{
-  "build": {
-    "beforeBuildCommand": "npm run build",
-    "beforeDevCommand": "npm run start",
-    "devPath": "http://localhost:3000",
-    "distDir": "../build"
-  },
+"build": {
+  "beforeBuildCommand": "npm run build",
+  "beforeDevCommand": "npm run start",
+  "distDir": "../build"
+}
   "package": {
     "productName": "azfx",
     "version": "1.0.0"
