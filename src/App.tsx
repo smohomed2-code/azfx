@@ -471,19 +471,39 @@ function App() {
   };
 
   const GradingSystem = () => {
-    const grades = [
-      { grade: 'A+', desc: 'Exceptional', color: 'from-yellow-300 to-yellow-500' },
-      { grade: 'A', desc: 'High Quality', color: 'from-[#FFD700] to-[#B8860B]' },
-      { grade: 'B', desc: 'Acceptable', color: 'from-yellow-400 to-yellow-600' },
-      { grade: 'C', desc: 'Questionable', color: 'from-orange-400 to-orange-600' },
-      { grade: 'D', desc: 'Avoid', color: 'from-red-500 to-red-700' },
-    ];
+  const grades = [
+    { grade: "A+", desc: "Institutional Setup", color: "from-green-400 to-emerald-600" },
+    { grade: "A", desc: "Strong Bullish Continuation", color: "from-green-400 to-green-600" },
+    { grade: "B+", desc: "Bullish Bias", color: "from-lime-400 to-green-500" },
+    { grade: "B", desc: "Moderate Bullish Setup", color: "from-yellow-400 to-lime-500" },
+    { grade: "C+", desc: "Neutral to Slightly Bullish", color: "from-yellow-400 to-orange-400" },
+    { grade: "C", desc: "Neutral / Range", color: "from-gray-400 to-gray-500" },
+    { grade: "D", desc: "Bearish Setup", color: "from-orange-500 to-red-500" },
+    { grade: "F", desc: "Strong Bearish Breakdown", color: "from-red-500 to-red-700" }
+  ];
 
-    return (
-      <div className="space-y-4 animate-fade-in">
-        <h2 className="text-xl font-bold text-white">Grading System</h2>
-        
-        <div className="glass-panel rounded-2xl p-5 border border-[#D4AF37]/20">
-          <h3 className="text-sm font-bold text-[#D4AF37] mb-4">How We Grade</h3>
-          <div className="space-y-3">
-            {grades.map((g) =>
+  return (
+    <div className="bg-[#0A0F1C] border border-[#D4AF37]/20 rounded-2xl p-6">
+      <h2 className="text-xl font-bold text-[#D4AF37] mb-6">
+        AZFX Trade Grading System
+      </h2>
+
+      <div className="space-y-3">
+        {grades.map((g) => (
+          <div
+            key={g.grade}
+            className="flex justify-between items-center p-3 rounded-xl bg-[#050811]/50 border border-[#D4AF37]/10"
+          >
+            <div>
+              <p className="text-sm font-bold text-white">{g.grade}</p>
+              <p className="text-xs text-gray-400">{g.desc}</p>
+            </div>
+            <div
+              className={`w-16 h-4 rounded-full bg-gradient-to-r ${g.color}`}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
