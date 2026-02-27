@@ -9,13 +9,14 @@
     "productName": "azfx",
     "version": "1.0.0"
   },
- "tauri": {
-  "bundle": {
-    "active": true,
-    "identifier": "com.azfx.app",
-    "targets": ["msi"],
-    "icon": [
-      "icons/icon.ico"
-    ]
+  "tauri": {
+    "bundle": {
+      "active": true,
+      "identifier": "com.azfx.app",
+      "targets": ["msi"],
+      "icon": [
+        "icons/icon.ico"
+      ]
+    }
   }
 }
