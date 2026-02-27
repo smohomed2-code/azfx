@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { createChart, ColorType, CrosshairMode, UTCTimestamp } from 'lightweight-charts';
+import { createChart, ColorType, UTCTimestamp } from 'lightweight-charts';
 import { TrendingUp, TrendingDown, Shield, CheckCircle2, AlertCircle, ChevronLeft, Activity, BarChart3, Timer, GraduationCap } from 'lucide-react';
 
 // ============================================
