@@ -2,7 +2,7 @@
   "build": {
     "beforeBuildCommand": "npm run build",
     "beforeDevCommand": "npm run start",
-    "distDir": "../build"
+    "distDir": "../dist"
   },
   "package": {
     "productName": "azfx",
