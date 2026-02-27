@@ -12,10 +12,12 @@
       "shell": { "open": true }
     },
     "bundle": {
-      "active": true,
-      "category": "Finance",
-      "identifier": "com.azfx.trading",
-      "targets": ["msi"]
+  "active": true,
+  "targets": "all",
+  "icon": [
+    "icons/icon.ico"
+  ]
+}
     },
     "windows": [
       {
