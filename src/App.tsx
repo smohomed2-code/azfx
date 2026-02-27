@@ -392,9 +392,9 @@ for (let i = 50; i >= 0; i--) {
 candleSeries.setData(data);
 chart.timeScale().fitContent();
 
-      return () => chart.remove();
-    }, [priceData.price]);
-
+   return () => chart.remove();
+}, []);
+    
     return (
       <div className="space-y-4 animate-fade-in">
         <h2 className="text-xl font-bold text-white">Technical Chart</h2>
