@@ -10,8 +10,8 @@
     "version": "1.0.0"
   },
   "tauri": {
-    "identifier": "com.azfx.app",
     "bundle": {
+      "identifier": "com.azfx.app",
       "active": true,
       "targets": "all",
       "icon": [
